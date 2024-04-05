@@ -1,10 +1,7 @@
-import { Spinner, Center } from "@chakra-ui/react";
+import { CreatePromoter } from './features/promoters/components/CreatePromoter';
+
 function App() {
-  return (
-    <Center>
-      <Spinner />
-    </Center>
-  );
+  return <CreatePromoter />;
 }
 
 export default App;
