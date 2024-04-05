@@ -1,2 +1,2 @@
 export type { Citizen } from './interface';
-export { CitizenFields } from './CitizenFields';
+export { CitizenFields } from './components/CitizenFields';

@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import { usePostPromoter } from '../hooks';
+import { usePostPromoter } from '..';
 import { Promoter } from '../interface';
 import { PromoterForm } from './PromoterForm';
 import {

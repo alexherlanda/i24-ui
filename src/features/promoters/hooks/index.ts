@@ -1,1 +1,0 @@
-export { usePostPromoter } from './usePostPromoter';

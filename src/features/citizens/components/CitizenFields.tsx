@@ -9,8 +9,8 @@ import {
 } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
-import { useElectoralSections } from '../electoralSections';
-import { Citizen } from '.';
+import { useElectoralSections } from '../../electoralSections';
+import { Citizen } from '..';
 
 export const CitizenFields = () => {
   const {
