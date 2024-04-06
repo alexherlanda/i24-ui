@@ -1,24 +1,29 @@
-import { useQuery } from '@tanstack/react-query';
+import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { httpClient } from '../../../libs';
 import { ElectoralSection } from '../interface';
-import { AxiosResponse } from 'axios';
+import { I24ServiceResponse } from '../../../interface';
+import { AxiosError, AxiosResponse } from 'axios';
 
-interface ApiResponse {
-  data: ElectoralSection[];
-}
+type ServerResponse = I24ServiceResponse<ElectoralSection[]>;
+type AxiosModifiedResponse = AxiosResponse<ServerResponse>;
+type Error = AxiosError<{ message: string }>;
 
-const selector = (data: ApiResponse): ElectoralSection[] => {
+const selector = (data: AxiosModifiedResponse) => {
   return data.data;
 };
 
-const readSections = async () => {
-  const response = await httpClient.get<ApiResponse>('sections');
-  return selector(response.data);
+const getSections = async () => {
+  const response = await httpClient.get<ServerResponse>('sections');
+  return selector(response);
 };
 
-export const useElectoralSections = () => {
+export const useElectoralSections = (
+  options: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
+) => {
   return useQuery({
     queryKey: ['sections'],
-    queryFn: readSections,
+    queryFn: () => getSections(),
+    staleTime: Infinity,
+    ...options,
   });
 };

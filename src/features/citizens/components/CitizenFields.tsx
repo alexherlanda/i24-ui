@@ -1,12 +1,4 @@
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  FormErrorMessage,
-  Select,
-  Box,
-  Heading,
-} from '@chakra-ui/react';
+import { FormControl, FormLabel, Input, FormErrorMessage, Select, Box } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
 
 import { useElectoralSections } from '../../electoralSections';
@@ -17,7 +9,7 @@ export const CitizenFields = () => {
     register,
     formState: { errors },
   } = useFormContext<Citizen>();
-  const electoralSectionsQuery = useElectoralSections();
+  const electoralSectionsQuery = useElectoralSections({});
   return (
     <Box>
       <FormControl isInvalid={!!errors.name} mt={4}>
@@ -42,7 +34,7 @@ export const CitizenFields = () => {
         </FormControl>
 
         <FormControl isInvalid={!!errors.firstSurname} mt={4}>
-          <FormLabel htmlFor="firstSurname">Apellido materno</FormLabel>
+          <FormLabel htmlFor="secondSurname">Apellido materno</FormLabel>
           <Input
             id="secondSurname"
             {...register('secondSurname', {
@@ -73,7 +65,7 @@ export const CitizenFields = () => {
             })}
           >
             {electoralSectionsQuery.isSuccess &&
-              electoralSectionsQuery.data.map(({ id, alias }) => (
+              electoralSectionsQuery.data.data.map(({ id, alias }) => (
                 <option key={id} value={id}>{`${id} ${alias}`}</option>
               ))}
           </Select>

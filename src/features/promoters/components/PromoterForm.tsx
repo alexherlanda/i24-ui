@@ -4,9 +4,7 @@ import {
   NumberInput,
   NumberInputField,
   FormErrorMessage,
-  Stack,
   Box,
-  Heading,
 } from '@chakra-ui/react';
 import { CitizenFields } from '../../citizens';
 import { useFormContext } from 'react-hook-form';

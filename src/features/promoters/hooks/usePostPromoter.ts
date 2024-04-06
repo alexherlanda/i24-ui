@@ -1,30 +1,26 @@
 import { I24ServiceResponse } from '../../../interface';
 import { httpClient } from '../../../libs';
-import { useMutation } from '@tanstack/react-query';
+import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { Promoter } from '../interface';
-import { AxiosResponse } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 
-type CreatePromoterPayload = {
-  name: string;
-  firstSurname: string;
-  secondSurname: string;
-  electorKey: string;
-  electoralSectionId: string;
-  promotionGoal: string;
-};
+type RawResponse = AxiosResponse<I24ServiceResponse<Promoter>>;
+type Error = AxiosError<{ message: string }>;
+type Payload = Promoter;
+type Response = I24ServiceResponse<Promoter>;
 
-const selector = (response: AxiosResponse<I24ServiceResponse<Promoter>, unknown>) => {
+const selector = (response: RawResponse) => {
   return response.data;
 };
 
-const createPromoter = async (payload: CreatePromoterPayload) => {
+const postPromoter = async (payload: Payload) => {
   const response = await httpClient.post<I24ServiceResponse<Promoter>>('promoters/', payload);
   return selector(response);
 };
 
-export const usePostPromoter = ({ onSuccess }: { onSuccess: () => void }) => {
+export const usePostPromoter = (options: UseMutationOptions<Response, Error, Payload>) => {
   return useMutation({
-    mutationFn: (payload: CreatePromoterPayload) => createPromoter(payload),
-    onSuccess: onSuccess,
+    mutationFn: (payload) => postPromoter(payload),
+    ...options,
   });
 };

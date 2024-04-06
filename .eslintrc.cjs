@@ -12,5 +12,18 @@ module.exports = {
   rules: {
     indent: ['error', 2],
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+    'no-console': 'error',
+    'no-redeclare': 'error',
+    curly: 'error',
+    camelcase: 'error',
+    'prefer-const': 'error',
+    'no-var': 'error',
+    'no-trailing-spaces': 'error',
+    'array-callback-return': 'error',
+    'no-lone-blocks': 'error',
+    'no-useless-catch': 'error',
+    yoda: 'error',
+    'prefer-arrow-callback': 'error',
+    'arrow-spacing': 'error',
   },
 };

@@ -1,7 +1,19 @@
-import { CreatePromoter } from './features/promoters/components/CreatePromoter';
+import { CreatePromotion } from './features/promotions/';
+import { CreatePromoter } from './features/promoters';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+const router = createBrowserRouter([
+  {
+    path: '/:promoterId/promote',
+    element: <CreatePromotion />,
+  },
+  {
+    path: '/',
+    element: <CreatePromoter />,
+  },
+]);
 function App() {
-  return <CreatePromoter />;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
