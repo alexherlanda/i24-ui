@@ -27,7 +27,7 @@ const tenMinutes = 600000;
 
 export const useGetPromoter = (
   promoterId: string,
-  options: Omit<UseQueryOptions<ServerResponse, Error, string>, 'queryKey' | 'queryFn'>,
+  options: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
 ) => {
   return useQuery({
     queryKey: ['promoter', promoterId],

@@ -4,8 +4,11 @@ import { Promoter } from '../interface';
 import { PromoterForm } from './PromoterForm';
 import { Heading, Stack, Container, Box, Button } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
+import { routes } from '../../../constants';
 
 export const CreatePromoter = () => {
+  const navigate = useNavigate();
   const mutation = usePostPromoter({
     onSuccess: (data) => {
       toast({
@@ -15,6 +18,7 @@ export const CreatePromoter = () => {
         isClosable: true,
       });
       form.reset();
+      navigate(routes.home);
     },
     onError: (error) => {
       toast({
