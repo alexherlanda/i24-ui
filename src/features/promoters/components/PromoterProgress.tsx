@@ -1,5 +1,6 @@
 import { HStack, VStack, Avatar, Text, Progress } from '@chakra-ui/react'; // Asegúrate de tener importados los componentes necesarios de Chakra UI
 import { Link } from 'react-router-dom';
+import { routes } from '../../../constants';
 
 type Props = {
   id: string;
@@ -10,7 +11,7 @@ type Props = {
 
 export const PromoterProgress = ({ label, progress, promotions, id }: Props) => {
   return (
-    <Link to={`/${id}/promote`}>
+    <Link to={routes.createPromotion.replace(':promoterId', id)}>
       <HStack p={4} boxShadow="md" borderRadius="lg" w="full" alignItems="center" spacing={4}>
         <Avatar name={label} />
         <VStack align="start" flex={1}>

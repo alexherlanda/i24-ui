@@ -13,7 +13,7 @@ const selector = (data: AxiosModifiedResponse) => {
 };
 
 const getPromotersProgress = async () => {
-  const response = await httpClient.get<ServerResponse>('promoters/progress');
+  const response = await httpClient.get<ServerResponse>('promoters/progress', {});
   return selector(response);
 };
 

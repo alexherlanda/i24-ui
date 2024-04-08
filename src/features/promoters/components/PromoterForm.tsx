@@ -9,6 +9,7 @@ import {
 import { CitizenFields } from '../../citizens';
 import { useFormContext } from 'react-hook-form';
 import { Promoter } from '../interface';
+import { AddressFields } from '../../citizens/components/AddressFields';
 
 export const PromoterForm = () => {
   const {
@@ -18,6 +19,7 @@ export const PromoterForm = () => {
   return (
     <>
       <CitizenFields />
+      <AddressFields />
       <Box mt={2}>
         <FormControl isInvalid={!!errors.promotionGoal} mt={4}>
           <FormLabel htmlFor="promotionGoal">Meta de promoción</FormLabel>

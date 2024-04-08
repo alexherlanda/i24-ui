@@ -30,11 +30,14 @@ export const CreatePromoter = () => {
       });
     },
   });
+  const form = useForm<Promoter>({
+    mode: 'onBlur',
+  });
+
   const onSubmit = (data: Promoter) => {
     mutation.mutate(data);
   };
 
-  const form = useForm<Promoter>();
   const toast = useToast();
 
   return (

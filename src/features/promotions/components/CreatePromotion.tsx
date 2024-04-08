@@ -4,9 +4,12 @@ import { Citizen, CitizenFields } from '../../citizens';
 import { usePostPromotion } from '../hooks/usePostPromotion';
 import { PromoterBadge } from '../../promoters';
 import { useParams } from 'react-router-dom';
+import { AddressFields } from '../../citizens/components/AddressFields';
 
 export const CreatePromotion = () => {
-  const form = useForm<Citizen>();
+  const form = useForm<Citizen>({
+    mode: 'onBlur',
+  });
   const toast = useToast();
   const mutation = usePostPromotion({
     onSuccess: (data) => {
@@ -50,6 +53,7 @@ export const CreatePromotion = () => {
             </Box>
 
             <CitizenFields />
+            <AddressFields />
             <Box mt={8} display="flex" justifyContent={'center'}>
               <Button size={'lg'} colorScheme="teal" isLoading={mutation.isPending} type="submit">
                 Registrar promovido

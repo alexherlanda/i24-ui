@@ -5,3 +5,8 @@ export type Citizen = {
   electorKey: string;
   electoralSectionId: string;
 };
+
+export type AddressForm = {
+  phoneNumber: string;
+  postalCode: string;
+};
