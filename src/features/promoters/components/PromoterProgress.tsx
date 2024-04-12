@@ -7,16 +7,17 @@ type Props = {
   label: string;
   progress: number;
   promotions: number; // Propiedad para el número de promociones
+  goal: number;
 };
 
-export const PromoterProgress = ({ label, progress, promotions, id }: Props) => {
+export const PromoterProgress = ({ label, progress, promotions, id, goal }: Props) => {
   return (
     <Link to={routes.createPromotion.replace(':promoterId', id)}>
       <HStack p={4} boxShadow="md" borderRadius="lg" w="full" alignItems="center" spacing={4}>
         <Avatar name={label} />
         <VStack align="start" flex={1}>
-          <Text fontWeight="bold">{label}</Text>
-          <Text fontSize="sm">Promociones: {promotions}</Text>{' '}
+          <Text fontWeight="bold">{`${label}`}</Text>
+          <Text fontSize="sm">Promociones: {`${promotions}/${goal}`}</Text>{' '}
           {/* Línea agregada para mostrar el número de promociones */}
           <Progress value={progress} size="sm" colorScheme="green" w="full" />
         </VStack>

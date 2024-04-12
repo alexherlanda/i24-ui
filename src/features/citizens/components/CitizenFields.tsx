@@ -12,8 +12,31 @@ export const CitizenFields = () => {
   const electoralSectionsQuery = useElectoralSections({});
   return (
     <Box>
-      <FormControl isInvalid={!!errors.name} mt={4}>
-        <FormLabel htmlFor="name">Nombre</FormLabel>
+      <FormControl isRequired isInvalid={!!errors.firstSurname} mt={4}>
+        <FormLabel htmlFor="firstSurname">Apellido paterno</FormLabel>
+        <Input
+          id="firstSurname"
+          autoComplete="firstName"
+          {...register('firstSurname', {
+            required: 'Este campo es requerido',
+          })}
+        />
+        <FormErrorMessage>{errors.firstSurname && errors.firstSurname.message}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isRequired isInvalid={!!errors.firstSurname} mt={4}>
+        <FormLabel htmlFor="secondSurname">Apellido materno</FormLabel>
+        <Input
+          id="secondSurname"
+          {...register('secondSurname', {
+            required: 'Este campo es requerido',
+          })}
+        />
+        <FormErrorMessage>{errors.firstSurname && errors.firstSurname.message}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isRequired isInvalid={!!errors.name} mt={4}>
+        <FormLabel htmlFor="name">Nombre(s)</FormLabel>
         <Input
           id="name"
           autoComplete="name"
@@ -21,30 +44,7 @@ export const CitizenFields = () => {
         />
         <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
 
-        <FormControl isInvalid={!!errors.firstSurname} mt={4}>
-          <FormLabel htmlFor="firstSurname">Apellido paterno</FormLabel>
-          <Input
-            id="firstSurname"
-            autoComplete="firstName"
-            {...register('firstSurname', {
-              required: 'Este campo es requerido',
-            })}
-          />
-          <FormErrorMessage>{errors.firstSurname && errors.firstSurname.message}</FormErrorMessage>
-        </FormControl>
-
-        <FormControl isInvalid={!!errors.firstSurname} mt={4}>
-          <FormLabel htmlFor="secondSurname">Apellido materno</FormLabel>
-          <Input
-            id="secondSurname"
-            {...register('secondSurname', {
-              required: 'Este campo es requerido',
-            })}
-          />
-          <FormErrorMessage>{errors.firstSurname && errors.firstSurname.message}</FormErrorMessage>
-        </FormControl>
-
-        <FormControl isInvalid={!!errors.electorKey} mt={4}>
+        <FormControl isRequired isInvalid={!!errors.electorKey} mt={4}>
           <FormLabel htmlFor="electorKey">Clave de elector</FormLabel>
           <Input
             id="electorKey"
@@ -53,7 +53,7 @@ export const CitizenFields = () => {
           <FormErrorMessage>{errors.electorKey && errors.electorKey.message}</FormErrorMessage>
         </FormControl>
 
-        <FormControl isInvalid={!!errors.electoralSectionId} mt={4}>
+        <FormControl isRequired isInvalid={!!errors.electoralSectionId} mt={4}>
           <FormLabel htmlFor="electoralSectionId">Sección electoral</FormLabel>
           <Select
             placeholder="Seleccione una seccion"

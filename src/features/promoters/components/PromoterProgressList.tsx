@@ -17,6 +17,7 @@ export const PromoterProgressList = ({ dataSource }: Props) => {
             label={promoter.label}
             progress={promoter.progress}
             promotions={promoter.promotions}
+            goal={promoter.goal}
           />
         ))}
       </VStack>

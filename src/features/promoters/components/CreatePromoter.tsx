@@ -6,9 +6,11 @@ import { Heading, Stack, Container, Box, Button } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import { routes } from '../../../constants';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const CreatePromoter = () => {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const mutation = usePostPromoter({
     onSuccess: (data) => {
       toast({
@@ -19,6 +21,7 @@ export const CreatePromoter = () => {
       });
       form.reset();
       navigate(routes.home);
+      queryClient.refetchQueries({ queryKey: ['promoters'] });
     },
     onError: (error) => {
       toast({

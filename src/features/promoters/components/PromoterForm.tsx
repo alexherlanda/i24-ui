@@ -21,7 +21,7 @@ export const PromoterForm = () => {
       <CitizenFields />
       <AddressFields />
       <Box mt={2}>
-        <FormControl isInvalid={!!errors.promotionGoal} mt={4}>
+        <FormControl isRequired isInvalid={!!errors.promotionGoal} mt={4}>
           <FormLabel htmlFor="promotionGoal">Meta de promoción</FormLabel>
           <NumberInput>
             <NumberInputField

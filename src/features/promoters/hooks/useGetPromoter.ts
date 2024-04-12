@@ -3,6 +3,7 @@ import { httpClient } from '../../../libs';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { AxiosResponse, AxiosError } from 'axios';
 import { Citizen } from '../../citizens';
+import { validateTokenExists } from '../../../utils/tokenHelpers';
 
 type Data = {
   id: string;
@@ -33,6 +34,7 @@ export const useGetPromoter = (
     queryKey: ['promoter', promoterId],
     queryFn: () => getPromoter(promoterId),
     staleTime: tenMinutes,
+    enabled: validateTokenExists() && options.enabled,
     ...options,
   });
 };

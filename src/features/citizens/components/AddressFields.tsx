@@ -16,7 +16,7 @@ export const AddressFields = () => {
   } = useFormContext<AddressForm>();
   return (
     <Box>
-      <FormControl isInvalid={!!errors.phoneNumber} mt={4}>
+      <FormControl isRequired isInvalid={!!errors.phoneNumber} mt={4}>
         <FormLabel htmlFor="phoneNumber">Telefono</FormLabel>
         <NumberInput>
           <NumberInputField
@@ -36,7 +36,7 @@ export const AddressFields = () => {
         </NumberInput>
         <FormErrorMessage>{errors.phoneNumber && errors.phoneNumber.message}</FormErrorMessage>
       </FormControl>
-      <FormControl isInvalid={!!errors.postalCode} mt={4}>
+      <FormControl isRequired isInvalid={!!errors.postalCode} mt={4}>
         <FormLabel htmlFor="postalCode">Codigo postal</FormLabel>
         <NumberInput>
           <NumberInputField
