@@ -6,7 +6,6 @@ export const useIsLoggedIn = () => {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    console.log('token', token);
     const tokenExists = validateTokenExists();
     setIsLoggedIn(tokenExists);
   }, [token]);

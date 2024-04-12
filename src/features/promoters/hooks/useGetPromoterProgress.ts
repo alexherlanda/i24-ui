@@ -3,7 +3,6 @@ import { httpClient } from '../../../libs';
 import { I24ServiceResponse } from '../../../interface';
 import { AxiosError, AxiosResponse } from 'axios';
 import { PromoterProgress } from '../interface';
-import { useIsLoggedIn } from '../../../hooks/useIsLoggedIn';
 import { validateTokenExists } from '../../../utils/tokenHelpers';
 
 type ServerResponse = I24ServiceResponse<PromoterProgress[]>;
