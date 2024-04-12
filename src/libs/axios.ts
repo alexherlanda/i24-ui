@@ -1,6 +1,8 @@
 import axios from 'axios';
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
+console.log('baseURL', baseURL);
+
 export const httpClient = axios.create({
   baseURL: baseURL,
 });
