@@ -9,7 +9,7 @@ type Props = {
 export const PromoterProgressList = ({ dataSource }: Props) => {
   return (
     <Container maxW="container.md" centerContent>
-      <VStack spacing={4} align="stretch" w="full">
+      <VStack mt={5} spacing={4} align="stretch" w="full">
         {dataSource.map((promoter) => (
           <PromoterProgress
             id={promoter.id}
@@ -18,6 +18,7 @@ export const PromoterProgressList = ({ dataSource }: Props) => {
             progress={promoter.progress}
             promotions={promoter.promotions}
             goal={promoter.goal}
+            avatarInitials={promoter.avatarInitials}
           />
         ))}
       </VStack>

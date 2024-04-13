@@ -10,6 +10,7 @@ export type PromoterProgress = {
   goal: number;
   promotions: number;
   progress: number;
+  avatarInitials: string;
 };
 
 export type PromoterProgressResponse = PromoterProgress[];
