@@ -13,7 +13,7 @@ export const PromotionsByPromoters: React.FC = () => {
     <>
       <Container mt={8}>
         <Heading> Torre de Vigilancia </Heading>
-        <PromotionsTotal goal={10} current={5} />
+        <PromotionsTotal />
       </Container>
       <Container mt={8}>
         <Heading size={'lg'}> Detalle del progreso </Heading>
