@@ -10,7 +10,6 @@ import {
 import { Controller } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { usePostLogin } from '../hooks/usePostLogin';
-import { useQueryClient } from '@tanstack/react-query';
 
 type Props = {
   closeDrawer: () => void;
@@ -34,7 +33,6 @@ export const LoginForm = ({ closeDrawer }: Props) => {
     },
   });
   const toast = useToast();
-  const queryClient = useQueryClient();
 
   const postLoginMutation = usePostLogin({
     onError: (error) => {
@@ -58,7 +56,7 @@ export const LoginForm = ({ closeDrawer }: Props) => {
         position: 'top',
       });
       closeDrawer();
-      queryClient.refetchQueries();
+      window.location.reload();
     },
   });
 

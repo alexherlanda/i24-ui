@@ -44,12 +44,9 @@ export const CitizenFields = () => {
         />
         <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
 
-        <FormControl isRequired isInvalid={!!errors.electorKey} mt={4}>
+        <FormControl isInvalid={!!errors.electorKey} mt={4}>
           <FormLabel htmlFor="electorKey">Clave de elector</FormLabel>
-          <Input
-            id="electorKey"
-            {...register('electorKey', { required: 'Este campo es requerido' })}
-          />
+          <Input id="electorKey" {...register('electorKey')} />
           <FormErrorMessage>{errors.electorKey && errors.electorKey.message}</FormErrorMessage>
         </FormControl>
 
