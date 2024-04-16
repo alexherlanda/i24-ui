@@ -13,4 +13,8 @@ export type PromoterProgress = {
   avatarInitials: string;
 };
 
+export type Filters = {
+  electoralSectionsId: string;
+};
+
 export type PromoterProgressResponse = PromoterProgress[];

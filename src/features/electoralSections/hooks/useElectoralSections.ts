@@ -18,7 +18,7 @@ const getSections = async () => {
 };
 
 export const useElectoralSections = (
-  options: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
+  options?: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
 ) => {
   return useQuery({
     queryKey: ['sections'],

@@ -4,6 +4,12 @@ export type Citizen = {
   secondSurname: string;
   electorKey: string;
   electoralSectionId: string;
+  Address?: Address;
+};
+
+export type Address = {
+  phoneNumber: string;
+  postalCode: string;
 };
 
 export type AddressForm = {

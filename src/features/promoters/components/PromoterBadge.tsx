@@ -22,7 +22,7 @@ export const PromoterBadge = ({ promoterId }: Props) => {
       <Avatar name={avatarName} />
       <Box ml="3">
         <Text fontWeight="bold">{name}</Text>
-        <Text fontSize="sm">Promotor</Text>
+        <Text fontSize="sm">{`${query.data?.data.Citizen?.Address?.phoneNumber}`}</Text>
       </Box>
     </Flex>
   );
