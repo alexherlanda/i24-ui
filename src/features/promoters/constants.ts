@@ -1,1 +1,1 @@
-export const tags = ['AYUNTAMIENTO', 'PROFESIONAL', 'TONI', 'VERO', 'PLANILLA'];
+export const tags = ['AYUNTAMIENTO', 'PROFESIONAL', 'TONI', 'VERO', 'PLANILLA', 'COORDINACION'];
