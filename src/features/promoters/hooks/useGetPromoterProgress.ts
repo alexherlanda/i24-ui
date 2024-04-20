@@ -2,8 +2,9 @@ import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { httpClient } from '../../../libs';
 import { I24ServiceResponse } from '../../../interface';
 import { AxiosError, AxiosResponse } from 'axios';
-import { Filters, PromoterProgress } from '../interface';
+import { PromoterProgress } from '../interface';
 import { validateTokenExists } from '../../../utils/tokenHelpers';
+import { FiltersForm } from '../../promotions/interface';
 
 type ServerResponse = I24ServiceResponse<PromoterProgress[]>;
 type AxiosModifiedResponse = AxiosResponse<ServerResponse>;
@@ -13,20 +14,20 @@ const selector = (data: AxiosModifiedResponse) => {
   return data.data;
 };
 
-const getPromotersProgress = async (filters: Filters) => {
-  const queryString = new URLSearchParams(filters).toString();
-  const response = await httpClient.get<ServerResponse>(`promoters/progress?${queryString}`);
+const getPromotersProgress = async (filters: FiltersForm) => {
+  const response = await httpClient.get<ServerResponse>(`promoters/progress`, {
+    params: filters,
+  });
   return selector(response);
 };
 
 export const useGetPromotersProgress = (
-  filters: Filters,
+  filters: FiltersForm,
   options?: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
 ) => {
   return useQuery({
     queryKey: ['promotersProgress', filters],
     queryFn: () => getPromotersProgress(filters),
-    staleTime: Infinity,
     enabled: validateTokenExists(),
     ...options,
   });

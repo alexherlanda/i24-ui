@@ -2,6 +2,8 @@ import { Citizen } from '../citizens/interface';
 
 export type Promoter = Citizen & {
   promotionGoal: string;
+  tag: string;
+  weeklyCost: number;
 };
 
 export type PromoterProgress = {
@@ -11,10 +13,7 @@ export type PromoterProgress = {
   promotions: number;
   progress: number;
   avatarInitials: string;
-};
-
-export type Filters = {
-  electoralSectionsId: string;
+  weeklyCost: number;
 };
 
 export type PromoterProgressResponse = PromoterProgress[];

@@ -7,9 +7,15 @@ import {
   ModalBody,
   ModalCloseButton,
   Button,
+  FormControl,
+  FormLabel,
+  Select,
+  FormErrorMessage,
 } from '@chakra-ui/react';
 import { SelectionsSelect } from '../../electoralSections/components/SectionsSelect';
 import { useFormContext } from 'react-hook-form';
+import { FiltersForm } from '../interface';
+import { tags } from '../../promoters';
 
 type Props = {
   isOpen: boolean;
@@ -24,6 +30,11 @@ export const FiltersModal = ({ isOpen, onClose }: Props) => {
     onClose();
   };
 
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<FiltersForm>();
+
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -32,7 +43,22 @@ export const FiltersModal = ({ isOpen, onClose }: Props) => {
         <ModalCloseButton />
         <ModalBody>
           <form>
-            <SelectionsSelect />
+            <SelectionsSelect isRequired={false} />
+
+            <FormControl isInvalid={!!errors.tag} mt={4}>
+              <FormLabel htmlFor="tag">Etiqueta</FormLabel>
+              <Select id="tag" {...register('tag')}>
+                <option value={undefined}></option>
+                {tags.map((tag) => (
+                  <option value={tag} key={tag}>
+                    {tag}
+                  </option>
+                ))}
+              </Select>
+              <FormErrorMessage>
+                {errors.electoralSectionId && errors.electoralSectionId.message}
+              </FormErrorMessage>
+            </FormControl>
           </form>
         </ModalBody>
 
@@ -41,7 +67,7 @@ export const FiltersModal = ({ isOpen, onClose }: Props) => {
             Borrar filtros
           </Button>
           <Button colorScheme="blue" mr={3} onClick={onClose}>
-            Aplicar filtros
+            OK
           </Button>
         </ModalFooter>
       </ModalContent>

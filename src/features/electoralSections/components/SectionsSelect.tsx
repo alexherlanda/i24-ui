@@ -4,7 +4,11 @@ import { useFormContext } from 'react-hook-form';
 
 type Form = Record<string, string> & { electoralSectionId: string };
 
-export const SelectionsSelect = () => {
+type Props = {
+  isRequired: boolean;
+};
+
+export const SelectionsSelect = ({ isRequired }: Props) => {
   const electoralSectionsQuery = useElectoralSections();
   const {
     register,
@@ -12,17 +16,17 @@ export const SelectionsSelect = () => {
   } = useFormContext<Form>();
 
   return (
-    <FormControl isRequired isInvalid={!!errors.electoralSectionId} mt={4}>
+    <FormControl isRequired={isRequired} isInvalid={!!errors.electoralSectionId} mt={4}>
       <FormLabel htmlFor="electoralSectionId">Sección electoral</FormLabel>
       <Select
-        placeholder="Seleccione una seccion"
         isDisabled={electoralSectionsQuery.isFetching}
         id="electoralSectionId"
         {...register('electoralSectionId', {
-          required: 'Este campo es requerido',
+          required: isRequired ? 'Este campo es requerido' : false,
           valueAsNumber: true,
         })}
       >
+        <option value={undefined}> </option>
         {electoralSectionsQuery.isSuccess &&
           electoralSectionsQuery.data.data.map(({ id, alias }) => (
             <option key={id} value={id}>{`${id} ${alias}`}</option>

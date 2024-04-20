@@ -19,6 +19,7 @@ export const PromoterProgressList = ({ dataSource }: Props) => {
             promotions={promoter.promotions}
             goal={promoter.goal}
             avatarInitials={promoter.avatarInitials}
+            weeklyCost={Number(promoter.weeklyCost)}
           />
         ))}
       </VStack>

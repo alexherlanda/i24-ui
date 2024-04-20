@@ -43,33 +43,33 @@ export const CitizenFields = () => {
           {...register('name', { required: 'Este campo es requerido' })}
         />
         <FormErrorMessage>{errors.name && errors.name.message}</FormErrorMessage>
+      </FormControl>
 
-        <FormControl isInvalid={!!errors.electorKey} mt={4}>
-          <FormLabel htmlFor="electorKey">Clave de elector</FormLabel>
-          <Input id="electorKey" {...register('electorKey')} />
-          <FormErrorMessage>{errors.electorKey && errors.electorKey.message}</FormErrorMessage>
-        </FormControl>
+      <FormControl isInvalid={!!errors.electorKey} mt={4}>
+        <FormLabel htmlFor="electorKey">Clave de elector</FormLabel>
+        <Input id="electorKey" {...register('electorKey')} />
+        <FormErrorMessage>{errors.electorKey && errors.electorKey.message}</FormErrorMessage>
+      </FormControl>
 
-        <FormControl isRequired isInvalid={!!errors.electoralSectionId} mt={4}>
-          <FormLabel htmlFor="electoralSectionId">Sección electoral</FormLabel>
-          <Select
-            placeholder="Seleccione una seccion"
-            isDisabled={electoralSectionsQuery.isFetching}
-            id="electoralSectionId"
-            {...register('electoralSectionId', {
-              required: 'Este campo es requerido',
-              valueAsNumber: true,
-            })}
-          >
-            {electoralSectionsQuery.isSuccess &&
-              electoralSectionsQuery.data.data.map(({ id, alias }) => (
-                <option key={id} value={id}>{`${id} ${alias}`}</option>
-              ))}
-          </Select>
-          <FormErrorMessage>
-            {errors.electoralSectionId && errors.electoralSectionId.message}
-          </FormErrorMessage>
-        </FormControl>
+      <FormControl isRequired isInvalid={!!errors.electoralSectionId} mt={4}>
+        <FormLabel htmlFor="electoralSectionId">Sección electoral</FormLabel>
+        <Select
+          placeholder="Seleccione una seccion"
+          isDisabled={electoralSectionsQuery.isFetching}
+          id="electoralSectionId"
+          {...register('electoralSectionId', {
+            required: 'Este campo es requerido',
+            valueAsNumber: true,
+          })}
+        >
+          {electoralSectionsQuery.isSuccess &&
+            electoralSectionsQuery.data.data.map(({ id, alias }) => (
+              <option key={id} value={id}>{`${id} ${alias}`}</option>
+            ))}
+        </Select>
+        <FormErrorMessage>
+          {errors.electoralSectionId && errors.electoralSectionId.message}
+        </FormErrorMessage>
       </FormControl>
     </Box>
   );

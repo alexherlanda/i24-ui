@@ -17,15 +17,22 @@ import PromotionsTotal from './PromotionsGlobalOverview';
 import { FaFilter } from 'react-icons/fa';
 import { FiltersModal } from './FiltersModal';
 import { useForm, FormProvider } from 'react-hook-form';
-import { Filters } from '../../promoters/interface';
+import { FiltersForm } from '../interface';
 
 export const PromotionsByPromoters: React.FC = () => {
-  const form = useForm<Filters>({
+  const form = useForm<FiltersForm>({
     mode: 'onBlur',
+    defaultValues: {
+      electoralSectionId: undefined,
+      tag: undefined,
+    },
   });
   const filters = form.watch();
 
-  const promotersProgress = useGetPromotersProgress(filters);
+  const promotersProgress = useGetPromotersProgress({
+    ...(filters.electoralSectionId && { electoralSectionId: filters.electoralSectionId }),
+    ...(filters.tag && { tag: filters.tag }),
+  });
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
