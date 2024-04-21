@@ -20,7 +20,7 @@ export const CreatePromoter = () => {
         isClosable: true,
       });
       form.reset();
-      navigate(routes.home);
+      navigate(routes.promoterProfile.replace(':promoterId', data.data.id));
       queryClient.refetchQueries({ queryKey: ['promoters'] });
     },
     onError: (error) => {

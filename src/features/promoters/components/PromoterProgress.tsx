@@ -22,7 +22,7 @@ export const PromoterProgress = ({
   weeklyCost,
 }: Props) => {
   return (
-    <Link to={routes.createPromotion.replace(':promoterId', id)}>
+    <Link to={routes.promoterProfile.replace(':promoterId', id)}>
       <HStack p={4} boxShadow="md" borderRadius="lg" w="full" alignItems="center" spacing={4}>
         <Avatar name={avatarInitials} />
         <VStack align="start" flex={1}>

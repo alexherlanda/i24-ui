@@ -3,13 +3,16 @@ import { Heading, Stack, Container, Box, Button, useToast } from '@chakra-ui/rea
 import { Citizen, CitizenFields } from '../../citizens';
 import { usePostPromotion } from '../hooks/usePostPromotion';
 import { PromoterBadge } from '../../promoters';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AddressFields } from '../../citizens/components/AddressFields';
+import { routes } from '../../../constants';
 
 export const CreatePromotion = () => {
   const form = useForm<Citizen>({
     mode: 'onBlur',
   });
+  const { promoterId } = useParams();
+  const navigate = useNavigate();
   const toast = useToast();
   const mutation = usePostPromotion({
     onSuccess: (data) => {
@@ -20,6 +23,7 @@ export const CreatePromotion = () => {
         duration: 9000,
         isClosable: true,
       });
+      navigate(routes.promoterProfile.replace(':promoterId', promoterId ?? ''));
     },
     onError: (error) => {
       toast({
@@ -39,8 +43,6 @@ export const CreatePromotion = () => {
       ...data,
     });
   };
-
-  const { promoterId } = useParams();
 
   return (
     <Container mt={10}>

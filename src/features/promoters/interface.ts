@@ -1,6 +1,7 @@
 import { Citizen } from '../citizens/interface';
 
 export type Promoter = Citizen & {
+  id: string;
   promotionGoal: string;
   tag: string;
   weeklyCost: number;
