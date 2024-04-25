@@ -5,6 +5,10 @@ import { I24ServiceResponse } from '../../../interface';
 
 type AuthData = {
   token: string;
+  user: {
+    id: string;
+    role: string;
+  };
 };
 
 type AxiosModifiedResponse = AxiosResponse<I24ServiceResponse<AuthData>>;

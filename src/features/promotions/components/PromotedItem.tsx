@@ -15,6 +15,7 @@ import { CiMenuKebab } from 'react-icons/ci';
 import { VscWorkspaceTrusted, VscWorkspaceUntrusted } from 'react-icons/vsc';
 import { usePatchPromotion } from '../hooks/usePatchPromotion';
 import { useQueryClient } from '@tanstack/react-query';
+import { useGetProfile } from '../../../global/hooks/useGetProfile';
 type Props = {
   id: string;
   name: string;
@@ -23,6 +24,7 @@ type Props = {
 };
 
 export const PromotedItem = ({ id, name, phoneNumber, status }: Props) => {
+  const profile = useGetProfile();
   const getIcon = () => {
     if (status === 'VERIFIED') {
       return VscWorkspaceTrusted;
@@ -60,23 +62,25 @@ export const PromotedItem = ({ id, name, phoneNumber, status }: Props) => {
         </Box>
       </Flex>
 
-      <Flex align="center">
-        <Menu>
-          <MenuButton as={IconButton} icon={<CiMenuKebab />} variant="outline" />
-          <MenuList>
-            <MenuOptionGroup
-              onChange={handleStatusChange}
-              defaultValue={status}
-              title="Status"
-              type="radio"
-            >
-              <MenuItemOption value="VERIFIED">Verificado</MenuItemOption>
-              <MenuItemOption value="UNVERIFIED">Sin Verificar</MenuItemOption>
-              <MenuItemOption value="REJECTED">Invalidado</MenuItemOption>
-            </MenuOptionGroup>
-          </MenuList>
-        </Menu>
-      </Flex>
+      {profile?.role === 'admin' && (
+        <Flex align="center">
+          <Menu>
+            <MenuButton as={IconButton} icon={<CiMenuKebab />} variant="outline" />
+            <MenuList>
+              <MenuOptionGroup
+                onChange={handleStatusChange}
+                defaultValue={status}
+                title="Status"
+                type="radio"
+              >
+                <MenuItemOption value="VERIFIED">Verificado</MenuItemOption>
+                <MenuItemOption value="UNVERIFIED">Sin Verificar</MenuItemOption>
+                <MenuItemOption value="REJECTED">Invalidado</MenuItemOption>
+              </MenuOptionGroup>
+            </MenuList>
+          </Menu>
+        </Flex>
+      )}
     </Flex>
   );
 };

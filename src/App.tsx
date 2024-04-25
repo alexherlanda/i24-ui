@@ -8,25 +8,35 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { routes } from './constants';
 import { LoginDrawer } from './features/login/components/LoginDrawer';
-const router = createBrowserRouter([
-  {
-    path: routes.promoterProfile,
-    element: <PromotionsByPromoter />,
-  },
-  {
-    path: routes.createPromotion,
-    element: <CreatePromotion />,
-  },
-  {
-    path: routes.createPromoter,
-    element: <CreatePromoter />,
-  },
-  {
-    path: routes.home,
-    element: <PromotionsByPromoters />,
-  },
-]);
+import { useGetProfile } from './global/hooks/useGetProfile';
+
 function App() {
+  const profile = useGetProfile();
+  const createRouterPayload = [
+    {
+      path: routes.promoterProfile,
+      element: <PromotionsByPromoter />,
+    },
+    {
+      path: routes.createPromotion,
+      element: <CreatePromotion />,
+    },
+  ];
+
+  if (profile?.role === 'admin') {
+    createRouterPayload.push(
+      {
+        path: routes.createPromoter,
+        element: <CreatePromoter />,
+      },
+      {
+        path: routes.home,
+        element: <PromotionsByPromoters />,
+      },
+    );
+  }
+  const router = createBrowserRouter(createRouterPayload);
+
   return (
     <>
       <LoginDrawer />

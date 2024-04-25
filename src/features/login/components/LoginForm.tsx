@@ -10,6 +10,8 @@ import {
 import { Controller } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import { usePostLogin } from '../hooks/usePostLogin';
+import { useContext } from 'react';
+import { AppContext } from '../../../global/AppContext';
 
 type Props = {
   closeDrawer: () => void;
@@ -33,6 +35,7 @@ export const LoginForm = ({ closeDrawer }: Props) => {
     },
   });
   const toast = useToast();
+  const { setProfile } = useContext(AppContext);
 
   const postLoginMutation = usePostLogin({
     onError: (error) => {
@@ -46,7 +49,7 @@ export const LoginForm = ({ closeDrawer }: Props) => {
         position: 'top',
       });
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
       toast({
         id: 'promotion',
         title: 'Bienvenido',
@@ -57,6 +60,8 @@ export const LoginForm = ({ closeDrawer }: Props) => {
       });
       closeDrawer();
       window.location.reload();
+
+      setProfile(data.data.user);
     },
   });
 
