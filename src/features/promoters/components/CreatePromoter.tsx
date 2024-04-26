@@ -1,7 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import { usePostPromoter } from '../hooks/usePostPromoter';
 import { Promoter } from '../interface';
-import { PromoterForm } from './PromoterForm';
+import { PromoterFields } from './PromoterFields';
 import { Heading, Stack, Container, Box, Button } from '@chakra-ui/react';
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
@@ -49,7 +49,7 @@ export const CreatePromoter = () => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <Stack>
             <Heading> Crear Promotor </Heading>
-            <PromoterForm />
+            <PromoterFields />
             <Box mt={5} display="flex" justifyContent={'center'}>
               <Button size={'lg'} colorScheme="teal" isLoading={mutation.isPending} type="submit">
                 Registrar Promotor

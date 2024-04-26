@@ -9,6 +9,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './constants';
 import { LoginDrawer } from './features/login/components/LoginDrawer';
 import { useGetProfile } from './global/hooks/useGetProfile';
+import { UpdatePromoter } from './features/promoters/components/UpdatePromoter';
 
 function App() {
   const profile = useGetProfile();
@@ -28,6 +29,10 @@ function App() {
       {
         path: routes.createPromoter,
         element: <CreatePromoter />,
+      },
+      {
+        path: routes.updatePromoter,
+        element: <UpdatePromoter />,
       },
       {
         path: routes.home,

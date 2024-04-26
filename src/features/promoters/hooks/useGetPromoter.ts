@@ -9,6 +9,8 @@ type Data = {
   id: string;
   citizenId: string;
   promotionGoal: number;
+  weeklyCost: number;
+  tag: string;
   Citizen: Citizen;
 };
 type ServerResponse = I24ServiceResponse<Data>;
@@ -28,13 +30,13 @@ const tenMinutes = 600000;
 
 export const useGetPromoter = (
   promoterId: string,
-  options: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
+  options?: Omit<UseQueryOptions<ServerResponse, Error>, 'queryKey' | 'queryFn'>,
 ) => {
   return useQuery({
     queryKey: ['promoter', promoterId],
     queryFn: () => getPromoter(promoterId),
     staleTime: tenMinutes,
-    enabled: validateTokenExists() && options.enabled,
+    enabled: validateTokenExists() && options?.enabled,
     ...options,
   });
 };

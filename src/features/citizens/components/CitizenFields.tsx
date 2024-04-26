@@ -1,15 +1,23 @@
 import { FormControl, FormLabel, Input, FormErrorMessage, Select, Box } from '@chakra-ui/react';
 import { useFormContext } from 'react-hook-form';
+import { ChangeEvent, useEffect } from 'react';
 
 import { useElectoralSections } from '../../electoralSections';
 import { Citizen } from '..';
 
 export const CitizenFields = () => {
   const {
+    setValue,
+    getValues,
     register,
     formState: { errors },
   } = useFormContext<Citizen>();
   const electoralSectionsQuery = useElectoralSections({});
+
+  useEffect(() => {
+    setValue('electoralSectionId', getValues('electoralSectionId'));
+  }, [electoralSectionsQuery.isSuccess, getValues, setValue]);
+
   return (
     <Box>
       <FormControl isRequired isInvalid={!!errors.firstSurname} mt={4}>
@@ -54,13 +62,16 @@ export const CitizenFields = () => {
       <FormControl isRequired isInvalid={!!errors.electoralSectionId} mt={4}>
         <FormLabel htmlFor="electoralSectionId">Sección electoral</FormLabel>
         <Select
-          placeholder="Seleccione una seccion"
           isDisabled={electoralSectionsQuery.isFetching}
           id="electoralSectionId"
           {...register('electoralSectionId', {
             required: 'Este campo es requerido',
-            valueAsNumber: true,
+            onChange: (event: ChangeEvent<HTMLInputElement>) => {
+              setValue('electoralSectionId', event.target.value);
+            },
+            value: getValues('electoralSectionId'),
           })}
+          //value={getValues('electoralSectionId')}
         >
           {electoralSectionsQuery.isSuccess &&
             electoralSectionsQuery.data.data.map(({ id, alias }) => (
