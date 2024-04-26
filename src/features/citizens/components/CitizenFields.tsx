@@ -65,6 +65,7 @@ export const CitizenFields = () => {
           isDisabled={electoralSectionsQuery.isFetching}
           id="electoralSectionId"
           {...register('electoralSectionId', {
+            valueAsNumber: true,
             required: 'Este campo es requerido',
             onChange: (event: ChangeEvent<HTMLInputElement>) => {
               setValue('electoralSectionId', event.target.value);
