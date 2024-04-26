@@ -21,9 +21,10 @@ type Props = {
   name: string;
   phoneNumber: string;
   status: string;
+  index: number;
 };
 
-export const PromotedItem = ({ id, name, phoneNumber, status }: Props) => {
+export const PromotedItem = ({ id, name, phoneNumber, status, index }: Props) => {
   const profile = useGetProfile();
   const getIcon = () => {
     if (status === 'VERIFIED') {
@@ -53,12 +54,16 @@ export const PromotedItem = ({ id, name, phoneNumber, status }: Props) => {
   return (
     <Flex justify="space-between" align="center" p="4" borderBottom="1px" borderColor="gray.200">
       <Flex alignItems={'center'} justifyContent={'center'}>
+        <Text mr={2}> {index + 1}</Text>
+        <Icon fontSize={22} as={getIcon()} mr={2} />
         <Box>
-          <Text fontWeight="bold">{name.toUpperCase()}</Text>
-          <Text>{phoneNumber}</Text>
-        </Box>
-        <Box ml={5}>
-          <Icon fontSize={22} as={getIcon()} />
+          <Text textOverflow={'clip'} fontWeight="bold">
+            {name.toUpperCase()}
+          </Text>
+
+          <Flex>
+            <Text>{phoneNumber}</Text>
+          </Flex>
         </Box>
       </Flex>
 

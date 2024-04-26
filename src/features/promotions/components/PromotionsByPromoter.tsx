@@ -17,20 +17,20 @@ export const PromotionsByPromoter = () => {
           <PromoterBadge promoterId={promoterId ?? ''} />
         </Box>
         {query.isFetching && <Spinner />}
+        <Button as={Link} to={routes.createPromotion.replace(':promoterId', promoterId ?? '')}>
+          Agregar Otro
+        </Button>
         {query.isSuccess &&
-          query.data.map((promotion) => (
+          query.data.map((promotion, index) => (
             <PromotedItem
+              index={index}
               key={promotion.id}
               id={promotion.id}
-              name={`${promotion.Citizens.name} ${promotion.Citizens.firstSurname} ${promotion.Citizens.secondSurname}`}
+              name={`${promotion.Citizens.firstSurname} ${promotion.Citizens.secondSurname}  ${promotion.Citizens.name}`}
               phoneNumber={promotion.Citizens.Address?.phoneNumber ?? ''}
               status={promotion.status}
             />
           ))}
-
-        <Button as={Link} to={routes.createPromotion.replace(':promoterId', promoterId ?? '')}>
-          Agregar Otro
-        </Button>
       </Stack>
     </Container>
   );
