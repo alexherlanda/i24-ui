@@ -13,18 +13,16 @@ const PromotionsTotal = () => {
         </Text>
         {query.isSuccess ? (
           <VictoryPie
-            innerRadius={5}
             animate={{
               duration: 2000,
             }}
             colorScale={['#000080', '#B0C4DE', '#800020']}
             height={300}
             labels={({ datum }) => `${datum.x}: ${datum.y}`}
-            padAngle={5}
             data={[
-              { x: 'POSITIVOS', y: query.data.totalVerified },
-              { x: 'NO VERIFICADOS', y: query.data.totalUnverified },
-              { x: 'FALSOS', y: query.data.totalRejected },
+              { x: 'VERDADERO', y: query.data.totalVerified },
+              { x: 'CAPTURADO', y: query.data.totalUnverified },
+              { x: 'FALSO', y: query.data.totalRejected },
             ]}
           />
         ) : null}
