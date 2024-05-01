@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 import { useGetGlobalOverview } from '../hooks/useGetGlobalOverview';
-import { VictoryPie, VictoryTooltip, VictoryVoronoiContainer } from 'victory';
+import { VictoryPie } from 'victory';
 
 const PromotionsTotal = () => {
   const query = useGetGlobalOverview();
