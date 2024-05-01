@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 import { useGetGlobalOverview } from '../hooks/useGetGlobalOverview';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryTooltip, VictoryVoronoiContainer } from 'victory';
 
 const PromotionsTotal = () => {
   const query = useGetGlobalOverview();
@@ -20,9 +20,9 @@ const PromotionsTotal = () => {
             height={300}
             labels={({ datum }) => `${datum.x}: ${datum.y}`}
             data={[
-              { x: 'VERDADERO', y: query.data.totalVerified },
-              { x: 'CAPTURADO', y: query.data.totalUnverified },
-              { x: 'FALSO', y: query.data.totalRejected },
+              { x: 'si', y: query.data.totalVerified },
+              { x: 'pendiente', y: query.data.totalUnverified },
+              { x: 'no', y: query.data.totalRejected },
             ]}
           />
         ) : null}
