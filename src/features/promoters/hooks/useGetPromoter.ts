@@ -2,18 +2,10 @@ import { I24ServiceResponse } from '../../../interface';
 import { httpClient } from '../../../libs';
 import { UseQueryOptions, useQuery } from '@tanstack/react-query';
 import { AxiosResponse, AxiosError } from 'axios';
-import { Citizen } from '../../citizens';
 import { validateTokenExists } from '../../../utils/tokenHelpers';
+import { ReadPromoterResponse } from '../../../shared-types';
 
-type Data = {
-  id: string;
-  citizenId: string;
-  promotionGoal: number;
-  weeklyCost: number;
-  tag: string;
-  Citizen: Citizen;
-};
-type ServerResponse = I24ServiceResponse<Data>;
+type ServerResponse = I24ServiceResponse<ReadPromoterResponse>;
 type AxiosModifiedResponse = AxiosResponse<ServerResponse>;
 type Error = AxiosError<{ message: string }>;
 

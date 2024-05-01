@@ -20,31 +20,23 @@ export const PromoterBadge = ({ promoterId }: Props) => {
     name = 'Anonimo';
   }
   return (
-    <Link to={routes.updatePromoter.replace(':promoterId', promoterId)}>
-      <Flex
-        p={4}
-        boxShadow={'0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);'}
-        mt={3}
-        mb={3}
-      >
+    <Flex p={4} boxShadow={'0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);'} mt={3} mb={3}>
+      <Link to={routes.updatePromoter.replace(':promoterId', promoterId)}>
         <Avatar name={avatarName} />
+      </Link>
 
-        <Box ml="3">
-          <Text mb={2} fontWeight="bold">
-            {name}
-          </Text>
-          <a href={`tel:${query.data?.data.Citizen?.Address?.phoneNumber}`}>
-            <Text
-              mb={2}
-              fontSize="sm"
-            >{`📞 ${query.data?.data.Citizen?.Address?.phoneNumber}`}</Text>
-          </a>
+      <Box ml="3">
+        <Text mb={2} fontWeight="bold">
+          {name}
+        </Text>
+        <a href={`tel:${query.data?.data.Citizen?.Address?.phoneNumber}`}>
+          <Text mb={2} fontSize="sm">{`📞 ${query.data?.data.Citizen?.Address?.phoneNumber}`}</Text>
+        </a>
 
-          <Text fontSize="sm">{`📍${query.data?.data.Citizen?.electoralSectionId} | 💵 $${
-            query.data?.data.weeklyCost
-          } | 🏷️ ${query.data?.data.tag ?? ''}`}</Text>
-        </Box>
-      </Flex>
-    </Link>
+        <Text fontSize="sm">{`📍${query.data?.data.Citizen?.electoralSectionId} | 💵 $${
+          query.data?.data.weeklyCost
+        } | 🏷️ ${query.data?.data.tag ?? ''}`}</Text>
+      </Box>
+    </Flex>
   );
 };
