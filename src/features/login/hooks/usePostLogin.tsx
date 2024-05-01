@@ -2,19 +2,12 @@ import { httpClient } from '../../../libs';
 import { UseMutationOptions, useMutation } from '@tanstack/react-query';
 import { AxiosError, AxiosResponse } from 'axios';
 import { I24ServiceResponse } from '../../../interface';
+import { LoginResponse } from '../../../shared-types';
 
-type AuthData = {
-  token: string;
-  user: {
-    id: string;
-    role: string;
-  };
-};
-
-type AxiosModifiedResponse = AxiosResponse<I24ServiceResponse<AuthData>>;
+type AxiosModifiedResponse = AxiosResponse<I24ServiceResponse<LoginResponse>>;
 type Error = AxiosError<{ message: string }>;
 type Payload = { username: string; password: string };
-type Response = I24ServiceResponse<AuthData>;
+type Response = I24ServiceResponse<LoginResponse>;
 
 const selector = (response: AxiosModifiedResponse): Response => {
   return response.data;

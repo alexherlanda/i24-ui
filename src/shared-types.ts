@@ -70,3 +70,36 @@ export type CreateUserResponse = {
   username: string;
   password?: string;
 };
+
+export type Profile = {
+  id: string;
+  username: string;
+  role: Role;
+  isActive: boolean;
+  citizenId: string;
+};
+
+export type LoginResponse = {
+  token: string;
+  profile: Profile;
+};
+
+export type FindUniquePromoterPayload = {
+  citizenId: string;
+};
+
+export type FindUniquePromoterResponse = {
+  id: string;
+  citizenId: string;
+  promotionGoal: number;
+  tag: string;
+  weeklyCost: number;
+  Citizen: {
+    id: string;
+    name: string;
+    firstSurname: string;
+    secondSurname: string;
+    electorKey: string;
+    hasVoted: boolean;
+  };
+};

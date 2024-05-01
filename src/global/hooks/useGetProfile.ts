@@ -1,11 +1,8 @@
 import { useContext } from 'react';
 import { AppContext } from '../AppContext';
+import { Profile } from '../../shared-types';
 
-type User = {
-  role: string;
-};
-
-export const useGetProfile = (): User | null => {
-  const { profile: user } = useContext(AppContext);
-  return user;
+export const useGetProfile = (): Profile | null => {
+  const context = useContext(AppContext);
+  return context.profile;
 };

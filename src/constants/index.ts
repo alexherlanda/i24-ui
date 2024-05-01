@@ -4,4 +4,5 @@ export const routes = {
   updatePromoter: '/promoter/:promoterId/update',
   promoterProfile: '/promoters/:promoterId',
   createPromotion: '/promoters/:promoterId/promote',
+  watchTower: '/watchTower',
 };
