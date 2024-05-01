@@ -3,6 +3,9 @@ import { Citizen } from '../citizens';
 export type GlobalOverview = {
   totalPromotions: number;
   totalGoals: number;
+  totalRejected: number;
+  totalUnverified: number;
+  totalVerified: number;
 };
 
 export type Promotion = {

@@ -62,7 +62,9 @@ export const PromotedItem = ({ id, name, phoneNumber, status, index }: Props) =>
           </Text>
 
           <Flex>
-            <Text>{phoneNumber}</Text>
+            <Text>
+              <a href={`tal:${phoneNumber}`}>{phoneNumber}</a>
+            </Text>
           </Flex>
         </Box>
       </Flex>

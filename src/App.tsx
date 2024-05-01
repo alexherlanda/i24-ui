@@ -37,6 +37,10 @@ function App() {
           path: routes.watchTower,
           element: <PromotionsByPromoters />,
         },
+        {
+          path: routes.promoterProfile,
+          element: <PromotionsByPromoter />,
+        },
         { path: '*', element: <p> 404 </p> },
       ];
     } else if (profile?.role === 'promoter') {
