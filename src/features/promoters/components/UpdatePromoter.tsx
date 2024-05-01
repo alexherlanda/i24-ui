@@ -72,11 +72,11 @@ export const UpdatePromoter = () => {
               firstSurname: promoter.Citizen.firstSurname,
               secondSurname: promoter.Citizen.secondSurname,
               electorKey: promoter.Citizen.electorKey,
-              electoralSectionId: promoter.Citizen.electoralSectionId,
+              electoralSectionId: String(promoter.Citizen.electoralSectionId),
               promotionGoal: String(promoter.promotionGoal),
               weeklyCost: String(promoter.weeklyCost),
-              phoneNumber: promoter.Citizen.Address?.phoneNumber ?? '',
-              postalCode: promoter.Citizen.Address?.postalCode ?? '',
+              phoneNumber: String(promoter.Citizen.Address?.phoneNumber ?? ''),
+              postalCode: String(promoter.Citizen.Address?.postalCode ?? ''),
               tag: promoter.tag,
             }}
           />

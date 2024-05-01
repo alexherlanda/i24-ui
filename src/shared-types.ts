@@ -51,6 +51,7 @@ export type ReadPromoterResponse = {
     };
     Address: {
       phoneNumber: number;
+      postalCode: string;
     };
   };
 };
