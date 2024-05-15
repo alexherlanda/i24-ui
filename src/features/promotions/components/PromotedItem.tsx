@@ -83,6 +83,7 @@ export const PromotedItem = ({ id, name, phoneNumber, status, index }: Props) =>
                 <MenuItemOption value="VERIFIED">Verificado</MenuItemOption>
                 <MenuItemOption value="UNVERIFIED">Sin Verificar</MenuItemOption>
                 <MenuItemOption value="REJECTED">Invalidado</MenuItemOption>
+                <MenuItemOption value="UNREACHABLE">Invalidado</MenuItemOption>
               </MenuOptionGroup>
             </MenuList>
           </Menu>
